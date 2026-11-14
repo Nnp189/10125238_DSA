@@ -9,34 +9,96 @@ namespace Buoi01_DeQuy
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Chay_Muc_1_4_2();
-            Chay_Muc_2_5_2();
-            Chay_Muc_3_7_2();
+            // ======================================================
+            // CHƯƠNG 1: TỔNG QUAN (Mục 1.4.2)
+            // ======================================================
+            Console.WriteLine("=== Chương 1 (Tổng quan) - Bài 1 ===");
+            Chuong1_Bai1();
+
+            Console.WriteLine("\n=== Chương 1 (Tổng quan) - Bài 2 ===");
+            Chuong1_Bai2();
+
+            Console.WriteLine("\n=== Chương 1 (Tổng quan) - Bài 3 ===");
+            Chuong1_Bai3();
+
+            Console.WriteLine("\n=== Chương 1 (Tổng quan) - Bài 4 ===");
+            Chuong1_Bai4();
+
+            Console.WriteLine("\n=== Chương 1 (Tổng quan) - Bài 5 ===");
+            Chuong1_Bai5();
+
+            // ======================================================
+            // CHƯƠNG 2: PHÂN TÍCH GIẢI THUẬT (Mục 2.5.2 - Trang 77-79)
+            // ======================================================
+            Console.WriteLine("\n=== Chương 2 (Phân tích GT) - Bài 1 ===");
+            Chuong2_Bai1();
+
+            Console.WriteLine("\n=== Chương 2 (Phân tích GT) - Bài 2 (Trang 77) ===");
+            Chuong2_Bai2();
+
+            Console.WriteLine("\n=== Chương 2 (Phân tích GT) - Bài 3 (Trang 77) ===");
+            Chuong2_Bai3();
+
+            Console.WriteLine("\n=== Chương 2 (Phân tích GT) - Bài 4 (Trang 78) ===");
+            Chuong2_Bai4();
+
+            Console.WriteLine("\n=== Chương 2 (Phân tích GT) - Bài 5 (Trang 78) ===");
+            Chuong2_Bai5();
+
+            Console.WriteLine("\n=== Chương 2 (Phân tích GT) - Bài 6 (Trang 78-79) ===");
+            Chuong2_Bai6();
+
+            // ======================================================
+            // CHƯƠNG 3: ĐỆ QUY (Mục 3.7.2 - Trang 100-101)
+            // ======================================================
+            Console.WriteLine("\n=== Chương 3 (Đệ quy) - Bài 1 (Trang 100) ===");
+            Chuong3_Bai1();
+
+            Console.WriteLine("\n=== Chương 3 (Đệ quy) - Bài 2 (Trang 100) ===");
+            Chuong3_Bai2();
+
+            Console.WriteLine("\n=== Chương 3 (Đệ quy) - Bài 3 (Trang 100) ===");
+            Chuong3_Bai3();
+
+            Console.WriteLine("\n=== Chương 3 (Đệ quy) - Bài 4 (Trang 100) ===");
+            Chuong3_Bai4();
+
+            Console.WriteLine("\n=== Chương 3 (Đệ quy) - Bài 5 (Trang 101) ===");
+            Chuong3_Bai5();
+
+            Console.WriteLine("\n=== Chương 3 (Đệ quy) - Bài 6 (Trang 101) ===");
+            Chuong3_Bai6();
+
+            Console.WriteLine("\n=== Chương 3 (Đệ quy) - Bài 7 (Trang 101) ===");
+            Chuong3_Bai7();
+
+            Console.WriteLine("\n=== Chương 3 (Đệ quy) - Bài 8 (Trang 101) ===");
+            Chuong3_Bai8();
         }
 
         // ==========================================================
-        // MỤC 1.4.2 - BÀI TẬP ÁP DỤNG
+        // CHƯƠNG 1: TỔNG QUAN (Mục 1.4.2)
         // ==========================================================
-        static void Chay_Muc_1_4_2()
+
+        // Chương 1 - Mục 1.4.2 - Bài 1
+        static void Chuong1_Bai1()
         {
-            Console.WriteLine("================ MỤC 1.4.2 ================");
             Random rd = new Random();
+            int[] arr = new int[1000];
+            for (int i = 0; i < 1000; i++) arr[i] = rd.Next(0, 10000);
 
-            // Muc 1.4.2 - Bai 1
-            Console.WriteLine("\n--- Bài 1: Max, Min mảng 1000 số tự nhiên ---");
-            int[] arr1 = new int[1000];
-            for (int i = 0; i < 1000; i++) arr1[i] = rd.Next(0, 10000);
-
-            int max = arr1[0], min = arr1[0];
+            int max = arr[0], min = arr[0];
             for (int i = 1; i < 1000; i++)
             {
-                if (arr1[i] > max) max = arr1[i];
-                if (arr1[i] < min) min = arr1[i];
+                if (arr[i] > max) max = arr[i];
+                if (arr[i] < min) min = arr[i];
             }
             Console.WriteLine($"Max = {max}, Min = {min}");
+        }
 
-            // Muc 1.4.2 - Bai 2
-            Console.WriteLine("\n--- Bài 2: FizzBuzz (1 -> 100) ---");
+        // Chương 1 - Mục 1.4.2 - Bài 2
+        static void Chuong1_Bai2()
+        {
             for (int i = 1; i <= 100; i++)
             {
                 if (i % 3 == 0 && i % 5 == 0) Console.Write("FizzBuzz ");
@@ -45,9 +107,11 @@ namespace Buoi01_DeQuy
                 else Console.Write(i + " ");
             }
             Console.WriteLine();
+        }
 
-            // Muc 1.4.2 - Bai 3
-            Console.WriteLine("\n--- Bài 3: Đảo ngược chuỗi ---");
+        // Chương 1 - Mục 1.4.2 - Bài 3
+        static void Chuong1_Bai3()
+        {
             Console.Write("Nhập chuỗi: ");
             string chuoi = Console.ReadLine() ?? "";
             string daoNguoc = "";
@@ -56,24 +120,21 @@ namespace Buoi01_DeQuy
                 daoNguoc += chuoi[i];
             }
             Console.WriteLine("Chuỗi đảo ngược: " + daoNguoc);
+        }
 
-            // Muc 1.4.2 - Bai 4
-            Console.WriteLine("\n--- Bài 4: Mảng 1000 số tự nhiên ---");
-            int[] arr4 = new int[1000];
-            for (int i = 0; i < 1000; i++) arr4[i] = rd.Next(0, 10000);
+        // Chương 1 - Mục 1.4.2 - Bài 4
+        static void Chuong1_Bai4()
+        {
+            Random rd = new Random();
+            int[] arr = new int[1000];
+            for (int i = 0; i < 1000; i++) arr[i] = rd.Next(0, 10000);
 
             Console.WriteLine("4a. Mảng ban đầu:");
-            InMang(arr4);
+            InMang(arr);
 
-            Array.Sort(arr4);
+            Array.Sort(arr);
             Console.WriteLine("\n4b. Mảng sau khi sắp xếp tăng dần:");
-            InMang(arr4);
-
-            // Muc 1.4.2 - Bai 5
-            Console.WriteLine("\n--- Bài 5: Số Fibonacci thứ n ---");
-            Console.Write("Nhập n: ");
-            int n = int.Parse(Console.ReadLine() ?? "10");
-            Console.WriteLine($"Fibonacci({n}) = {Fibonacci_VongLap(n)}");
+            InMang(arr);
         }
 
         static void InMang(int[] arr)
@@ -83,82 +144,47 @@ namespace Buoi01_DeQuy
             Console.WriteLine();
         }
 
-        // ==========================================================
-        // MỤC 2.5.2 - BÀI TẬP ÁP DỤNG (Trang 77 - 79)
-        // ==========================================================
-        static void Chay_Muc_2_5_2()
+        // Chương 1 - Mục 1.4.2 - Bài 5
+        static void Chuong1_Bai5()
         {
-            Console.WriteLine("\n================ MỤC 2.5.2 (Trang 77 - 79) ================");
-            Stopwatch sw = new Stopwatch();
-
-            // Muc 2.5.2 - Bai 1
-            Console.WriteLine("\n--- Bài 1: Tháp Hà Nội ---");
-            Console.WriteLine("Hệ thức: T(n) = 2T(n-1) + 1, T(1) = 1 => Độ phức tạp: O(2^n)");
-
-            // Trang 77 - Muc 2.5.2 - Bai 2
-            Console.WriteLine("\n--- Bài 2 (Trang 77): Tìm kiếm nhị phân ---");
-            Console.WriteLine("Hệ thức: T(n) = T(n/2) + 1, T(1) = 1 => Độ phức tạp: O(log n)");
-
-            // Trang 77 - Muc 2.5.2 - Bai 3
-            Console.WriteLine("\n--- Bài 3 (Trang 77): Kiểm tra số nguyên tố (n = 100000007) ---");
-            int soNT = 100000007;
-            sw.Restart();
-            bool kqNT1 = KiemTraNguyenTo_Cach1(soNT);
-            sw.Stop();
-            Console.WriteLine($"Cách 1 (Duyệt 2..n-1) - O(n): {kqNT1} | Thời gian: {sw.Elapsed.TotalMilliseconds} ms");
-
-            sw.Restart();
-            bool kqNT2 = KiemTraNguyenTo_Cach2(soNT);
-            sw.Stop();
-            Console.WriteLine($"Cách 2 (Duyệt 2..√n) - O(√n): {kqNT2} | Thời gian: {sw.Elapsed.TotalMilliseconds} ms");
-
-            // Trang 78 - Muc 2.5.2 - Bai 4
-            Console.WriteLine("\n--- Bài 4 (Trang 78): Liệt kê số hoàn hảo < N (N = 10000) ---");
-            int N = 10000;
-            sw.Restart();
-            LietKeSoHoanHao_Cach1(N);
-            sw.Stop();
-            Console.WriteLine($"Cách 1 (Cơ bản) - O(N^2) | Thời gian: {sw.Elapsed.TotalMilliseconds} ms");
-
-            sw.Restart();
-            LietKeSoHoanHao_Cach2(N);
-            sw.Stop();
-            Console.WriteLine($"Cách 2 (Cải tiến duyệt đến √k) - O(N√N) | Thời gian: {sw.Elapsed.TotalMilliseconds} ms");
-
-            // Trang 78 - Muc 2.5.2 - Bai 5
-            Console.WriteLine("\n--- Bài 5 (Trang 78): Tìm số Fibonacci thứ n (n = 35) ---");
-            int fibN = 35;
-            sw.Restart();
-            long f1 = Fibonacci_DeQuy(fibN);
-            sw.Stop();
-            Console.WriteLine($"Cách 1 (Đệ quy) - O(2^n): {f1} | Thời gian: {sw.Elapsed.TotalMilliseconds} ms");
-
-            sw.Restart();
-            long f2 = Fibonacci_VongLap(fibN);
-            sw.Stop();
-            Console.WriteLine($"Cách 2 (Vòng lặp) - O(n): {f2} | Thời gian: {sw.Elapsed.TotalMilliseconds} ms");
-
-            // Trang 78, 79 - Muc 2.5.2 - Bai 6
-            Console.WriteLine("\n--- Bài 6 (Trang 78-79): Sắp xếp dãy 5000 số thực ---");
-            int size = 5000;
-            Random rd = new Random();
-            double[] goc = new double[size];
-            for (int i = 0; i < size; i++) goc[i] = Math.Round(rd.NextDouble() * 1000, 2);
-
-            double[] mangBubble = (double[])goc.Clone();
-            sw.Restart();
-            BubbleSort(mangBubble);
-            sw.Stop();
-            Console.WriteLine($"Cách 1 (Bubble Sort) - O(n^2) | Thời gian: {sw.Elapsed.TotalMilliseconds} ms");
-
-            double[] mangSelection = (double[])goc.Clone();
-            sw.Restart();
-            SelectionSort(mangSelection);
-            sw.Stop();
-            Console.WriteLine($"Cách 2 (Selection Sort) - O(n^2) | Thời gian: {sw.Elapsed.TotalMilliseconds} ms");
+            Console.Write("Nhập n: ");
+            int n = int.Parse(Console.ReadLine() ?? "10");
+            Console.WriteLine($"Fibonacci({n}) = {Fibonacci_VongLap(n)}");
         }
 
-        // Trang 77 - Bai 3
+        // ==========================================================
+        // CHƯƠNG 2: PHÂN TÍCH GIẢI THUẬT (Mục 2.5.2 - Trang 77-79)
+        // ==========================================================
+
+        // Chương 2 - Mục 2.5.2 - Bài 1
+        static void Chuong2_Bai1()
+        {
+            Console.WriteLine("Tháp Hà Nội: T(n) = 2T(n-1) + 1, T(1) = 1 => O(2^n)");
+        }
+
+        // Chương 2 - Mục 2.5.2 - Bài 2 (Trang 77)
+        static void Chuong2_Bai2()
+        {
+            Console.WriteLine("Tìm kiếm nhị phân: T(n) = T(n/2) + 1, T(1) = 1 => O(log n)");
+        }
+
+        // Chương 2 - Mục 2.5.2 - Bài 3 (Trang 77)
+        static void Chuong2_Bai3()
+        {
+            Stopwatch sw = new Stopwatch();
+            int soNT = 100000007;
+
+            sw.Restart();
+            bool kq1 = KiemTraNguyenTo_Cach1(soNT);
+            sw.Stop();
+            Console.WriteLine($"Cách 1 - O(n): {kq1} | {sw.Elapsed.TotalMilliseconds} ms");
+
+            sw.Restart();
+            bool kq2 = KiemTraNguyenTo_Cach2(soNT);
+            sw.Stop();
+            Console.WriteLine($"Cách 2 - O(√n): {kq2} | {sw.Elapsed.TotalMilliseconds} ms");
+        }
+
         static bool KiemTraNguyenTo_Cach1(int n)
         {
             if (n < 2) return false;
@@ -176,7 +202,23 @@ namespace Buoi01_DeQuy
             return true;
         }
 
-        // Trang 78 - Bai 4
+        // Chương 2 - Mục 2.5.2 - Bài 4 (Trang 78)
+        static void Chuong2_Bai4()
+        {
+            Stopwatch sw = new Stopwatch();
+            int N = 10000;
+
+            sw.Restart();
+            LietKeSoHoanHao_Cach1(N);
+            sw.Stop();
+            Console.WriteLine($"Cách 1 - O(N^2) | {sw.Elapsed.TotalMilliseconds} ms");
+
+            sw.Restart();
+            LietKeSoHoanHao_Cach2(N);
+            sw.Stop();
+            Console.WriteLine($"Cách 2 - O(N√N) | {sw.Elapsed.TotalMilliseconds} ms");
+        }
+
         static void LietKeSoHoanHao_Cach1(int N)
         {
             Console.Write("Kết quả Cách 1: ");
@@ -210,7 +252,23 @@ namespace Buoi01_DeQuy
             Console.WriteLine();
         }
 
-        // Trang 78 - Bai 5
+        // Chương 2 - Mục 2.5.2 - Bài 5 (Trang 78)
+        static void Chuong2_Bai5()
+        {
+            Stopwatch sw = new Stopwatch();
+            int n = 35;
+
+            sw.Restart();
+            long f1 = Fibonacci_DeQuy(n);
+            sw.Stop();
+            Console.WriteLine($"Cách 1 (Đệ quy) - O(2^n): {f1} | {sw.Elapsed.TotalMilliseconds} ms");
+
+            sw.Restart();
+            long f2 = Fibonacci_VongLap(n);
+            sw.Stop();
+            Console.WriteLine($"Cách 2 (Vòng lặp) - O(n): {f2} | {sw.Elapsed.TotalMilliseconds} ms");
+        }
+
         static long Fibonacci_DeQuy(int n)
         {
             if (n == 0) return 0;
@@ -232,7 +290,28 @@ namespace Buoi01_DeQuy
             return fn;
         }
 
-        // Trang 79 - Bai 6
+        // Chương 2 - Mục 2.5.2 - Bài 6 (Trang 78-79)
+        static void Chuong2_Bai6()
+        {
+            Stopwatch sw = new Stopwatch();
+            int size = 5000;
+            Random rd = new Random();
+            double[] goc = new double[size];
+            for (int i = 0; i < size; i++) goc[i] = Math.Round(rd.NextDouble() * 1000, 2);
+
+            double[] mang1 = (double[])goc.Clone();
+            sw.Restart();
+            BubbleSort(mang1);
+            sw.Stop();
+            Console.WriteLine($"Bubble Sort - O(n^2) | {sw.Elapsed.TotalMilliseconds} ms");
+
+            double[] mang2 = (double[])goc.Clone();
+            sw.Restart();
+            SelectionSort(mang2);
+            sw.Stop();
+            Console.WriteLine($"Selection Sort - O(n^2) | {sw.Elapsed.TotalMilliseconds} ms");
+        }
+
         static void BubbleSort(double[] a)
         {
             int n = a.Length;
@@ -267,47 +346,52 @@ namespace Buoi01_DeQuy
         }
 
         // ==========================================================
-        // MỤC 3.7.2 - BÀI TẬP ÁP DỤNG ĐỆ QUY (Trang 100 - 101)
+        // CHƯƠNG 3: ĐỆ QUY (Mục 3.7.2 - Trang 100-101)
         // ==========================================================
-        static void Chay_Muc_3_7_2()
-        {
-            Console.WriteLine("\n================ MỤC 3.7.2 (Trang 100 - 101) ================");
-            int n = 5;
-            double x = 2;
 
-            Console.WriteLine($"Bài 1 (Trang 100) - S({n}) = 1 + ... + {n} = {TinhS_Bai1(n)}");
-            Console.WriteLine($"Bài 2 (Trang 100) - S({n}) = 1^2 + ... + {n}^2 = {TinhS_Bai2(n)}");
-            Console.WriteLine($"Bài 3 (Trang 100) - S({n}) = 1 + 1/2 + ... + 1/{n} = {TinhS_Bai3(n):F4}");
-            Console.WriteLine($"Bài 4 (Trang 100) - S({x}, {n}) = {x}^{n} = {TinhS_Bai4(x, n)}");
-            Console.WriteLine($"Bài 4 (Trang 100) - S({x}, -2) = {x}^(-2) = {TinhS_Bai4(x, -2)}");
-            Console.WriteLine($"Bài 5 (Trang 101) - Ước lẻ lớn nhất của 100 = {UocLeMax(100)}");
-            Console.WriteLine($"Bài 6 (Trang 101) - UCLN(48, 18) = {UCLN(48, 18)}");
-            Console.WriteLine($"Bài 7 (Trang 101) - Số chữ số của 12345 = {SoChuSo(12345)}");
-            Console.WriteLine($"Bài 8 (Trang 101) - Tổng căn lồng nhau (n = {n}) = {TinhS_Bai8(n):F4}");
+        // Chương 3 - Mục 3.7.2 - Bài 1 (Trang 100)
+        static void Chuong3_Bai1()
+        {
+            Console.WriteLine($"S(5) = {TinhS_Bai1(5)}");
         }
 
-        // Trang 100 - Muc 3.7.2 - Bai 1
         static int TinhS_Bai1(int n)
         {
             if (n == 1) return 1;
             return TinhS_Bai1(n - 1) + n;
         }
 
-        // Trang 100 - Muc 3.7.2 - Bai 2
+        // Chương 3 - Mục 3.7.2 - Bài 2 (Trang 100)
+        static void Chuong3_Bai2()
+        {
+            Console.WriteLine($"S(5) = {TinhS_Bai2(5)}");
+        }
+
         static int TinhS_Bai2(int n)
         {
             if (n == 1) return 1;
             return TinhS_Bai2(n - 1) + n * n;
         }
 
-        // Trang 100 - Muc 3.7.2 - Bai 3
+        // Chương 3 - Mục 3.7.2 - Bài 3 (Trang 100)
+        static void Chuong3_Bai3()
+        {
+            Console.WriteLine($"S(5) = {TinhS_Bai3(5):F4}");
+        }
+
         static double TinhS_Bai3(int n)
         {
             if (n == 1) return 1.0;
             return TinhS_Bai3(n - 1) + 1.0 / n;
         }
 
-        // Trang 100 - Muc 3.7.2 - Bai 4
+        // Chương 3 - Mục 3.7.2 - Bài 4 (Trang 100)
+        static void Chuong3_Bai4()
+        {
+            Console.WriteLine($"S(2, 5) = {TinhS_Bai4(2, 5)}");
+            Console.WriteLine($"S(2, -2) = {TinhS_Bai4(2, -2)}");
+        }
+
         static double LuyThua(double x, int n)
         {
             if (n == 0) return 1;
@@ -320,37 +404,41 @@ namespace Buoi01_DeQuy
             return LuyThua(x, n);
         }
 
-        // Trang 101 - Muc 3.7.2 - Bai 5
+        // Chương 3 - Mục 3.7.2 - Bài 5 (Trang 101)
+        static void Chuong3_Bai5()
+        {
+            Console.WriteLine($"Ước lẻ lớn nhất của 100 = {UocLeMax(100)}");
+        }
+
         static int UocLeMax(int n)
         {
             if (n % 2 == 1) return n;
             return UocLeMax(n / 2);
         }
 
-        // Trang 101 - Muc 3.7.2 - Bai 6
+        // Chương 3 - Mục 3.7.2 - Bài 6 (Trang 101)
+        static void Chuong3_Bai6()
+        {
+            Console.WriteLine($"UCLN(48, 18) = {UCLN(48, 18)}");
+        }
+
         static int UCLN(int a, int b)
         {
             if (a % b == 0) return b;
             return UCLN(b, a % b);
         }
 
-        // Trang 101 - Muc 3.7.2 - Bai 7
+        // Chương 3 - Mục 3.7.2 - Bài 7 (Trang 101)
+        static void Chuong3_Bai7()
+        {
+            Console.WriteLine($"Số chữ số của 12345 = {SoChuSo(12345)}");
+        }
+
         static int SoChuSo(int n)
         {
             if (n == 0) return 0;
             return SoChuSo(n / 10) + 1;
         }
 
-        // Trang 101 - Muc 3.7.2 - Bai 8
-        static float Can(int i, int n)
-        {
-            if (i == n) return (float)Math.Sqrt(n);
-            return (float)Math.Sqrt(i + Can(i + 1, n));
-        }
-
-        static float TinhS_Bai8(int n)
-        {
-            return Can(1, n);
-        }
-    }
-}
+        // Chương 3 - Mục 3.7.2 - Bài 8 (Trang 101)
+        static void Chu
