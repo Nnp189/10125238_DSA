@@ -1,0 +1,332 @@
+using System;
+
+namespace Buoi02_DanhSach
+{
+    // Chương 4 - Bài 2 (Trang 160-161)
+    struct NhanVien
+    {
+        public string MaNV;
+        public string Hoten;
+        public int Namsinh;
+        public string Phongban;
+        public int LuongCB;
+        public int Thuong;
+        public int ThucLinh => LuongCB + Thuong;
+    }
+
+    // Chương 4 - Bài 4, 5 (Trang 163-164)
+    class Node
+    {
+        public int Data;
+        public Node? Next;
+        public Node(int data)
+        {
+            Data = data;
+            Next = null;
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+            Console.WriteLine("=== Chương 4 (Danh sách) - Bài 1 (Trang 159-160) ===");
+            Chuong4_Bai1();
+
+            Console.WriteLine("\n=== Chương 4 (Danh sách) - Bài 2 (Trang 160-161) ===");
+            Chuong4_Bai2();
+
+            Console.WriteLine("\n=== Chương 4 (Danh sách) - Bài 3 (Trang 162) ===");
+            Chuong4_Bai3();
+
+            Console.WriteLine("\n=== Chương 4 (Danh sách) - Bài 4 (Trang 163) ===");
+            Chuong4_Bai4();
+
+            Console.WriteLine("\n=== Chương 4 (Danh sách) - Bài 5 (Trang 163-164) ===");
+            Chuong4_Bai5();
+        }
+
+        // ==========================================================
+        // Chương 4 - Mục 4.6.2 - Bài 1 (Trang 159-160)
+        // ==========================================================
+        static void Chuong4_Bai1()
+        {
+            // a. Nhập từ bàn phím
+            Console.Write("Nhập số phần tử n: ");
+            int n = int.Parse(Console.ReadLine() ?? "5");
+            int[] a = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"a[{i}] = ");
+                a[i] = int.Parse(Console.ReadLine() ?? "0");
+            }
+
+            // b. Hiển thị danh sách
+            Console.Write("Danh sách ban đầu: ");
+            for (int i = 0; i < a.Length; i++) Console.Write(a[i] + " ");
+            Console.WriteLine();
+
+            // c. Chèn phần tử x vào vị trí k
+            Console.Write("Nhập giá trị x cần chèn: ");
+            int x = int.Parse(Console.ReadLine() ?? "99");
+            Console.Write($"Nhập vị trí k (0..{a.Length}): ");
+            int k = int.Parse(Console.ReadLine() ?? "0");
+
+            if (k >= 0 && k <= a.Length)
+            {
+                int[] tmp = new int[a.Length + 1];
+                for (int i = 0; i < k; i++) tmp[i] = a[i];
+                tmp[k] = x;
+                for (int i = k; i < a.Length; i++) tmp[i + 1] = a[i];
+                a = tmp;
+
+                Console.Write("Danh sách sau khi chèn: ");
+                for (int i = 0; i < a.Length; i++) Console.Write(a[i] + " ");
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("Vị trí chèn không hợp lệ!");
+            }
+        }
+
+        // ==========================================================
+        // Chương 4 - Mục 4.6.2 - Bài 2 (Trang 160-161)
+        // ==========================================================
+        static void Chuong4_Bai2()
+        {
+            NhanVien[] DS = new NhanVien[]
+            {
+                new NhanVien { MaNV = "NV01", Hoten = "Nguyễn Văn An", Namsinh = 1998, Phongban = "IT", LuongCB = 15000000, Thuong = 2000000 },
+                new NhanVien { MaNV = "NV02", Hoten = "Trần Thị Bình", Namsinh = 2000, Phongban = "Kế toán", LuongCB = 10000000, Thuong = 1000000 },
+                new NhanVien { MaNV = "NV03", Hoten = "Lê Hoàng Cường", Namsinh = 1995, Phongban = "IT", LuongCB = 18000000, Thuong = 2500000 },
+                new NhanVien { MaNV = "NV04", Hoten = "Phạm Minh Dung", Namsinh = 2001, Phongban = "Nhân sự", LuongCB = 10000000, Thuong = 1200000 },
+                new NhanVien { MaNV = "NV05", Hoten = "Hoàng Gia Em", Namsinh = 1999, Phongban = "Kế toán", LuongCB = 12000000, Thuong = 800000 }
+            };
+
+            // a. Tổng thực lĩnh tháng của tất cả nhân viên
+            long tongThucLinh = 0;
+            for (int i = 0; i < DS.Length; i++) tongThucLinh += DS[i].ThucLinh;
+            Console.WriteLine($"a. Tổng thực lĩnh: {tongThucLinh:N0} VNĐ");
+
+            // b. Nhân viên có mức lương cơ bản thấp nhất
+            int minLuong = int.MaxValue;
+            for (int i = 0; i < DS.Length; i++)
+                if (DS[i].LuongCB < minLuong) minLuong = DS[i].LuongCB;
+
+            Console.WriteLine($"b. Nhân viên lương cơ bản thấp nhất ({minLuong:N0}):");
+            for (int i = 0; i < DS.Length; i++)
+                if (DS[i].LuongCB == minLuong)
+                    Console.WriteLine($"   - {DS[i].MaNV} | {DS[i].Hoten} | {DS[i].Phongban}");
+
+            // c. Đếm số lượng nhân viên có mức thưởng >= 1200000
+            int demThuong = 0;
+            for (int i = 0; i < DS.Length; i++)
+                if (DS[i].Thuong >= 1200000) demThuong++;
+            Console.WriteLine($"c. Số nhân viên có thưởng >= 1,200,000: {demThuong}");
+
+            // d. Sắp xếp tăng dần theo phòng ban, trùng thì giảm dần theo mã NV
+            for (int i = 0; i < DS.Length - 1; i++)
+            {
+                for (int j = i + 1; j < DS.Length; j++)
+                {
+                    int cmpPhong = string.Compare(DS[i].Phongban, DS[j].Phongban, StringComparison.Ordinal);
+                    bool canDoi = cmpPhong > 0 || (cmpPhong == 0 && string.Compare(DS[i].MaNV, DS[j].MaNV, StringComparison.Ordinal) < 0);
+                    if (canDoi)
+                    {
+                        NhanVien tmp = DS[i];
+                        DS[i] = DS[j];
+                        DS[j] = tmp;
+                    }
+                }
+            }
+            Console.WriteLine("d. Danh sách sau khi sắp xếp (Phòng ban tăng, Mã NV giảm):");
+            foreach (var nv in DS)
+                Console.WriteLine($"   - {nv.Phongban} | {nv.MaNV} | {nv.Hoten} | Lương CB: {nv.LuongCB:N0}");
+
+            // e. Cập nhật tăng lương cơ bản lên 5%
+            Console.WriteLine("e. Cập nhật tăng lương cơ bản 5%:");
+            for (int i = 0; i < DS.Length; i++)
+            {
+                DS[i].LuongCB = (int)(DS[i].LuongCB * 1.05);
+                Console.WriteLine($"   - {DS[i].MaNV} | {DS[i].Hoten} | Lương CB mới: {DS[i].LuongCB:N0} | Thực lĩnh: {DS[i].ThucLinh:N0}");
+            }
+        }
+
+        // ==========================================================
+        // Chương 4 - Mục 4.6.2 - Bài 3 (Trang 162)
+        // ==========================================================
+        static void Chuong4_Bai3()
+        {
+            int[,] a = {
+                { 1,  2, 3 },
+                { 4, -5, 6 },
+                { 7,  8, 9 }
+            };
+            int n = a.GetLength(0);
+
+            // a. Tổng tất cả phần tử
+            int tong = 0;
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    tong += a[i, j];
+            Console.WriteLine($"a. Tổng các phần tử ma trận: {tong}");
+
+            // b. Giá trị dương nhỏ nhất
+            int minDuong = int.MaxValue;
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    if (a[i, j] > 0 && a[i, j] < minDuong)
+                        minDuong = a[i, j];
+            Console.WriteLine($"b. Giá trị dương nhỏ nhất: {minDuong}");
+
+            // c. Tổng đường chéo phụ (j = n - 1 - i)
+            int tongCheoPhu = 0;
+            for (int i = 0; i < n; i++)
+                tongCheoPhu += a[i, n - 1 - i];
+            Console.WriteLine($"c. Tổng đường chéo phụ: {tongCheoPhu}");
+
+            // d. Kiểm tra đường chéo chính có tăng dần hay không
+            bool tangDan = true;
+            for (int i = 0; i < n - 1; i++)
+            {
+                if (a[i, i] >= a[i + 1, i + 1])
+                {
+                    tangDan = false;
+                    break;
+                }
+            }
+            Console.WriteLine($"d. Đường chéo chính tăng dần: {tangDan}");
+        }
+
+        // ==========================================================
+        // Chương 4 - Mục 4.6.2 - Bài 4 (Trang 163)
+        // ==========================================================
+        static void Chuong4_Bai4()
+        {
+            Node? pHead = null;
+            int[] duLieu = { 12, 5, 8, 5, 20 };
+            foreach (int val in duLieu) pHead = ThemCuoi(pHead, val);
+
+            Console.Write("Danh sách ban đầu: ");
+            InDSLK(pHead);
+
+            int x = 5;
+            // a. Đếm số phần tử bằng x
+            int dem = 0;
+            for (Node? p = pHead; p != null; p = p.Next)
+                if (p.Data == x) dem++;
+            Console.WriteLine($"a. Số phần tử bằng {x}: {dem}");
+
+            // b. Tìm phần tử dương nhỏ nhất
+            int minDuong = int.MaxValue;
+            for (Node? p = pHead; p != null; p = p.Next)
+                if (p.Data > 0 && p.Data < minDuong) minDuong = p.Data;
+            Console.WriteLine($"b. Phần tử dương nhỏ nhất: {minDuong}");
+
+            // c. Xóa phần tử x xuất hiện đầu tiên
+            pHead = XoaDauTienBangX(pHead, x);
+            Console.Write($"c. Danh sách sau khi xóa {x} đầu tiên: ");
+            InDSLK(pHead);
+        }
+
+        static Node? XoaDauTienBangX(Node? pHead, int x)
+        {
+            if (pHead == null) return null;
+            if (pHead.Data == x) return pHead.Next;
+
+            Node? truoc = pHead;
+            Node? hienTai = pHead.Next;
+            while (hienTai != null)
+            {
+                if (hienTai.Data == x)
+                {
+                    truoc.Next = hienTai.Next;
+                    break;
+                }
+                truoc = hienTai;
+                hienTai = hienTai.Next;
+            }
+            return pHead;
+        }
+
+        // ==========================================================
+        // Chương 4 - Mục 4.6.2 - Bài 5 (Trang 163-164)
+        // ==========================================================
+        static void Chuong4_Bai5()
+        {
+            Node? l = null;
+            int[] duLieu = { -4, 7, 0, 11, 4, 0, -9, 2 };
+            foreach (int val in duLieu) l = ThemCuoi(l, val);
+
+            Console.Write("Danh sách l: ");
+            InDSLK(l);
+
+            // a. Phần tử lớn nhất
+            int max = int.MinValue;
+            for (Node? p = l; p != null; p = p.Next)
+                if (p.Data > max) max = p.Data;
+            Console.WriteLine($"a. Phần tử lớn nhất: {max}");
+
+            // b. Tổng các phần tử
+            int tong = 0;
+            for (Node? p = l; p != null; p = p.Next) tong += p.Data;
+            Console.WriteLine($"b. Tổng các phần tử: {tong}");
+
+            // c. Đếm số nguyên tố
+            int demNT = 0;
+            for (Node? p = l; p != null; p = p.Next)
+                if (LaSoNguyenTo(p.Data)) demNT++;
+            Console.WriteLine($"c. Số lượng số nguyên tố: {demNT}");
+
+            // d. Đếm số âm, số bằng 0, số dương
+            int demAm = 0, demKhong = 0, demDuong = 0;
+            for (Node? p = l; p != null; p = p.Next)
+            {
+                if (p.Data < 0) demAm++;
+                else if (p.Data == 0) demKhong++;
+                else demDuong++;
+            }
+            Console.WriteLine($"d. Số âm: {demAm} | Số bằng 0: {demKhong} | Số dương: {demDuong}");
+
+            // e. Đếm số phần tử bằng x
+            int x = 0, demX = 0;
+            for (Node? p = l; p != null; p = p.Next)
+                if (p.Data == x) demX++;
+            Console.WriteLine($"e. Số phần tử bằng {x}: {demX}");
+
+            // f. Phần tử dương nhỏ nhất
+            int minDuong = int.MaxValue;
+            for (Node? p = l; p != null; p = p.Next)
+                if (p.Data > 0 && p.Data < minDuong) minDuong = p.Data;
+            Console.WriteLine($"f. Phần tử dương nhỏ nhất: {minDuong}");
+        }
+
+        static Node ThemCuoi(Node? head, int data)
+        {
+            Node moi = new Node(data);
+            if (head == null) return moi;
+            Node p = head;
+            while (p.Next != null) p = p.Next;
+            p.Next = moi;
+            return head;
+        }
+
+        static void InDSLK(Node? head)
+        {
+            for (Node? p = head; p != null; p = p.Next)
+                Console.Write(p.Data + (p.Next != null ? " -> " : ""));
+            Console.WriteLine();
+        }
+
+        static bool LaSoNguyenTo(int n)
+        {
+            if (n < 2) return false;
+            for (int i = 2; i <= Math.Sqrt(n); i++)
+                if (n % i == 0) return false;
+            return true;
+        }
+    }
+}
